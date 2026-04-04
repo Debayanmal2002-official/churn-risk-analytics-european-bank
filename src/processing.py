@@ -1,8 +1,11 @@
 import pandas as pd
 import numpy as np
+from pathlib import Path
 from debugpy.launcher.debuggee import describe
 
-df = pd.read_excel("data/raw_european_bank_data.xlsx")
+BASE_DIR = Path(__file__).resolve().parents[1]
+file_path = BASE_DIR / "data" / "raw_european_bank_data.xlsx"
+df = pd.read_excel(file_path)
 print(df.info())
 
 ## -- Dropping Surname for privacy reason --
@@ -51,4 +54,5 @@ print(df.info())
 print(df.isnull().sum())
 
 ## -- Final Save --
-df.to_excel("data/processed_data.xlsx", index=False)
+save_path = BASE_DIR / "data" / "processed_data.xlsx"
+df.to_excel(save_path, index=False)
