@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from debugpy.launcher.debuggee import describe
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 file_path = BASE_DIR / "data" / "raw_european_bank_data.xlsx"
