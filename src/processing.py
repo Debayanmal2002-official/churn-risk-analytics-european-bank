@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from debugpy.launcher.debuggee import describe
 
-df = pd.read_excel("raw_european_bank_data.xlsx")
+df = pd.read_excel("data/raw_european_bank_data.xlsx")
 print(df.info())
 
 ## -- Dropping Surname for privacy reason --
@@ -51,4 +51,4 @@ print(df.info())
 print(df.isnull().sum())
 
 ## -- Final Save --
-df.to_excel('processed_data.xlsx', index=False)
+df.to_excel("data/processed_data.xlsx", index=False)
