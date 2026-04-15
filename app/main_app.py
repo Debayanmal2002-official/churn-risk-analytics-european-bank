@@ -10,7 +10,6 @@ st.set_page_config(
 )
 
 # --- Load Data ---
-@st.cache_data
 def load_data():
     BASE_DIR = Path(__file__).resolve().parents[1]
     file_path = BASE_DIR / "data" / "processed_data.xlsx"
