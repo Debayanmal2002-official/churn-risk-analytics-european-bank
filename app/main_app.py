@@ -193,13 +193,14 @@ with tab2:
     }
 
     if segment_option in order_map:
-        churn_segment[segment_option] = pd.Categorical(
-            churn_segment[segment_option],
-            categories=order_map[segment_option],
-            ordered=True
-        )
-        churn_segment = churn_segment.sort_values(segment_option)
-        churn_segment = churn_segment.set_index(segment_option).reindex(order_map[segment_option]).reset_index()
+    churn_segment[segment_option] = pd.Categorical(
+        churn_segment[segment_option],
+        categories=order_map[segment_option],
+        ordered=True
+    )
+
+    churn_segment = churn_segment.sort_values(segment_option)
+    churn_segment = churn_segment.dropna()
 
     current_color_map = color_maps.get(segment_option, {})
 
