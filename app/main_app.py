@@ -198,9 +198,6 @@ with tab2:
 
     churn_segment["Exited"] *= 100
 
-    # Remove NaNs (important for bins)
-    churn_segment = churn_segment.dropna()
-
     if segment_option in order_map:
         churn_segment[segment_option] = pd.Categorical(
             churn_segment[segment_option],
