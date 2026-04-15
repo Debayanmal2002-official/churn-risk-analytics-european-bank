@@ -149,6 +149,8 @@ with tab2:
         "Select Segmentation Dimension",
         ["CreditScoreGroup", "AgeGroup", "SalaryGroup", "TenureGroup"]
     )
+    churn_segment = (df.groupby(segment_option)["Exited"].mean().reset_index())
+    churn_segment["Exited"] = churn_segment["Exited"] * 100
 
     # Custom ordering for known groups
     order_map = {
@@ -190,22 +192,14 @@ with tab2:
         }
     }
 
-    churn_segment = (
-    df.groupby(segment_option)["Exited"]
-    .mean()
-    .reset_index()
-)
-
-    churn_segment["Exited"] *= 100
-    churn_segment = churn_segment.dropna()
     if segment_option in order_map:
         churn_segment[segment_option] = pd.Categorical(
             churn_segment[segment_option],
             categories=order_map[segment_option],
             ordered=True
         )
-
-    churn_segment = churn_segment.sort_values(segment_option)
+        churn_segment = churn_segment.sort_values(segment_option)
+        churn_segment = churn_segment.set_index(segment_option).reindex(order_map[segment_option]).reset_index()
 
     current_color_map = color_maps.get(segment_option, {})
 
@@ -511,5 +505,4 @@ with tab6:
             f"🔥 Highest Risk Segment: Customer with {top_combo['BalanceGroup']} balance and {top_combo['SalaryGroup']} salary "
             f"({top_combo['Exited']:.2f}% churn)")
         st.info("📌 Focus Area: High-value, inactive, and mature customers in Germany" )
-
 
