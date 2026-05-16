@@ -251,6 +251,9 @@ with tab2:
             text_auto=".2f",
             title=f"Churn Rate by {display_map[segment_option]} (%)"
         )
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
 
@@ -304,6 +307,9 @@ with tab2:
             color_discrete_map=current_color_map,
             title=f"Churn Contribution by {display_map[segment_option]}"
         )
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         fig.update_traces(textinfo="percent+label")
         st.plotly_chart(fig, use_container_width=True)
 
@@ -368,7 +374,9 @@ with tab3:
             title="Churn Rate by Balance & Salary Segment (%)",
             color_discrete_sequence=px.colors.qualitative.Bold
         )
-
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
@@ -407,6 +415,9 @@ with tab4:
             text_auto=".2f",
             title="Churn Rate by Gender (%)"
         )
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
 
@@ -448,6 +459,9 @@ with tab4:
             text_auto=".2f",
             title="Churn Rate by Customer Activity (%)"
         )
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
@@ -474,6 +488,9 @@ with tab5:
             text_auto=".2f",
             title="Churn Rate by Balance Segment (%)"
         )
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
     with col2:
@@ -505,6 +522,9 @@ with tab5:
         text_auto=".1f",
         title="Churn Rate by Balance and Salary (%)"
     )
+    fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
 
     st.plotly_chart(fig, use_container_width=True)
     st.caption(
