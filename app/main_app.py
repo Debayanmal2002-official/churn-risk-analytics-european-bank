@@ -5,9 +5,36 @@ from pathlib import Path
 
 # --- Page Config ---
 st.set_page_config(
-    page_title="Bank Customer Dashboard",
+    page_title="Bank Customer Analytics Dashboard",
     layout="wide"
 )
+
+# ADD THEME CSS HERE
+st.markdown("""
+<style>
+
+.stApp {
+    background-color: #0F172A;
+    color: #F8FAFC;
+}
+
+section[data-testid="stSidebar"] {
+    background-color: #1E293B;
+}
+
+div[data-testid="metric-container"] {
+    background-color: #111827;
+    border: 1px solid #334155;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+h1, h2, h3, h4 {
+    color: #F8FAFC;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 # --- Load Data ---
 def load_data():
