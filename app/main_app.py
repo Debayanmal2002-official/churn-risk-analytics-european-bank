@@ -103,9 +103,9 @@ import streamlit as st
 
 def kpi_card(title, value):
     card_html = f"""
-    <div style="background-color:#111827; padding:20px; border-radius:16px; border:1px solid #334155; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
-        <p style="font-size:15px; color:#CBD5E1; margin-bottom:10px; font-weight:500; margin-top:0;">{title}</p>
-        <h1 style="font-size:34px; font-weight:700; color:#F8FAFC; margin:0;">{value}</h1>
+    <div style="background-color:#111827; padding:12px 20px; border-radius:16px; border:1px solid #334155; text-align:center; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+        <p style="font-size:14px; color:#CBD5E1; margin-bottom:4px; font-weight:500; margin-top:0;">{title}</p>
+        <h1 style="font-size:30px; font-weight:700; color:#F8FAFC; margin:0;">{value}</h1>
     </div>
     """
     st.markdown(card_html, unsafe_allow_html=True)
