@@ -72,12 +72,21 @@ Interactive Customer Churn Intelligence & Retention Analytics
 
 # --- Sidebar Filters ---
 st.sidebar.header("Filters")
+
+all_geo = list(df["Geography"].unique())
+
 geo_filter = st.sidebar.multiselect(
     "Select Geography",
-    options=df["Geography"].unique(),
-    default=df["Geography"].unique()
+    options=all_geo,
+    default=all_geo
 )
 
+# Prevent empty selection
+if len(geo_filter) == 0:
+    st.sidebar.warning("Select at least one geography")
+    st.stop()
+
+# Filter dataframe
 df = df[df["Geography"].isin(geo_filter)]
 
 ## --- Main Body ---
