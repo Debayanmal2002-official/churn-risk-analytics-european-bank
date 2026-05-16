@@ -127,10 +127,10 @@ with tab1:
             names="Geography", values="Count", hole=0.5,
             color_discrete_sequence=px.colors.qualitative.Bold,
             title="Churn Distribution by Geography",
-            paper_bgcolor="#0F172A",
-            plot_bgcolor="#0F172A",
-            font_color="#F8FAFC"
         )
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         fig.update_traces(textinfo="percent+label")
         fig.layout.showlegend = False
         st.plotly_chart(fig, use_container_width=True)
