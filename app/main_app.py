@@ -13,59 +13,32 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-.hero-section {
-    background-image: linear-gradient(
-        rgba(15, 23, 42, 0.82),
-        rgba(15, 23, 42, 0.88)
-    ),
-    url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a");
-
+.hero-section {background-image: linear-gradient( rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.88) ),
+    url("https://images.unsplash.com/photo-1554224155-6726b3ff858f");
     background-size: cover;
     background-position: center;
-
-    padding: 60px 40px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-
+    padding: 35px 40px;
+    border-radius: 18px;
+    margin-bottom: 25px;
     border: 1px solid #334155;
 }
 
-.hero-title {
-    color: #F8FAFC;
-    font-size: 60px;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-.hero-subtitle {
-    color: #CBD5E1;
-    font-size: 20px;
-}
-
+.hero-title {color: #F8FAFC; font-size: 42px; font-weight: 800; margin-bottom: 8px;}
+.hero-subtitle { color: #CBD5E1; font-size: 16px; font-weight: 400;}
 </style>
 """, unsafe_allow_html=True)
+
 st.markdown("""
 <style>
-
-.stApp {
-    background-color: #0F172A;
-    color: #F8FAFC;
-}
-
-section[data-testid="stSidebar"] {
-    background-color: #1E293B;
-}
-
+.stApp {background-color: #0F172A; color: #F8FAFC;}
+section[data-testid="stSidebar"] { background-color: #1E293B;}
 div[data-testid="metric-container"] {
     background-color: #111827;
     border: 1px solid #334155;
     padding: 15px;
-    border-radius: 12px;
-}
+    border-radius: 12px;}
 
-h1, h2, h3, h4 {
-    color: #F8FAFC;
-}
+h1, h2, h3, h4 {color: #F8FAFC;}
 
 </style>
 """, unsafe_allow_html=True)
@@ -85,13 +58,15 @@ df_og = df.copy()
 # --- Title ---
 st.markdown("""
 <div class="hero-section">
-    <div class="hero-title">
-        🏦 Bank Customer Analytics Dashboard
-    </div>
 
-    <div class="hero-subtitle">
-        Interactive Customer Churn Intelligence & Retention Analytics
-    </div>
+<div class="hero-title">
+🏦 Bank Customer Analytics Dashboard
+</div>
+
+<div class="hero-subtitle">
+Interactive Customer Churn Intelligence & Retention Analytics
+</div>
+
 </div>
 """, unsafe_allow_html=True)
 
