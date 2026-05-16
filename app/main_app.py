@@ -152,7 +152,9 @@ with tab1:
             text_auto=".1f",
             title="Churn Rate by Geography and Age Group (%)"
         )
-
+        fig.update_layout(paper_bgcolor="#0F172A",
+                          plot_bgcolor="#0F172A",
+                          font_color="#F8FAFC")
         st.plotly_chart(fig, use_container_width=True)
         st.caption("Shows how churn varies across age groups within each geography. "
                    "Helps identify region-specific customer behavior patterns.")
