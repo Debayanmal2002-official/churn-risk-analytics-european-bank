@@ -242,7 +242,7 @@ with tab2:
 
     col1, col2 = st.columns([2, 1])
     with col1:
-    fig = px.bar(
+        fig = px.bar(
         churn_segment,
         x=segment_option,
         y="Exited",
