@@ -328,34 +328,36 @@ with tab2:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.subheader("🧠 Insights")
-        # Top & bottom segments
-        sorted_df = churn_segment.sort_values(by="Exited", ascending=False)
-        top_seg = sorted_df.iloc[0]
-        low_seg = sorted_df.iloc[-1]
-        # Spread (variation)
-        max_val = top_seg["Exited"]
-        min_val = low_seg["Exited"]
-        spread = max_val - min_val
-        # 1. Key finding
-        st.write(
-            f"• **{top_seg[segment_option]}** has the highest churn rate "
-            f"(**{max_val:.2f}%**)"
-        )
-        # 2. Lowest segment (context matters)
-        st.write(
-            f"• Lowest churn observed in **{low_seg[segment_option]}** "
-            f"(**{min_val:.2f}%**)"
-        )
-        # 3. Spread interpretation
-        st.write(f"• Churn gap across segments: **{spread:.2f}%**")
-        if spread > 20:
-            st.warning("⚠️ Significant variation → strong segment-based churn behavior")
-        else:
-            st.info("ℹ️ Churn is relatively consistent across segments")
-        # 4. Strategic takeaway
-        st.write("• High-risk segments require targeted retention strategies")
-        st.write("• Low-risk segments indicate stable customer base")
+        with st.container(border=True):
+            st.subheader("🧠 Insights")
+            # Top & bottom segments
+            sorted_df = churn_segment.sort_values(by="Exited", ascending=False)
+            top_seg = sorted_df.iloc[0]
+            low_seg = sorted_df.iloc[-1]
+            # Spread (variation)
+            max_val = top_seg["Exited"]
+            min_val = low_seg["Exited"]
+            spread = max_val - min_val
+            # 1. Key finding
+            st.write(
+                f"• **{top_seg[segment_option]}** has the highest churn rate "
+                f"(**{max_val:.2f}%**)"
+            )
+            # 2. Lowest segment (context matters)
+            st.write(
+                f"• Lowest churn observed in **{low_seg[segment_option]}** "
+                f"(**{min_val:.2f}%**)"
+            )
+            # 3. Spread interpretation
+            st.write(f"• Churn gap across segments: **{spread:.2f}%**")
+            if spread > 20:
+                st.warning("⚠️ Significant variation → strong segment-based churn behavior")
+            else:
+                st.info("ℹ️ Churn is relatively consistent across segments")
+            # 4. Strategic takeaway
+            st.write("• High-risk segments require targeted retention strategies")
+            st.write("• Low-risk segments indicate stable customer base")
+        
 
     st.caption("Displays the churn rate (%) within each selected segment. "
                "Helps identify which customer groups have a higher likelihood of exiting.")
