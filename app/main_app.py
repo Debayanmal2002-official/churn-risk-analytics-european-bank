@@ -114,6 +114,7 @@ def kpi_card(title, value):
         text-align:center;
         box-shadow:0 4px 12px rgba(0,0,0,0.25);
     ">
+    
         <div style="
             font-size:15px;
             color:#CBD5E1;
