@@ -386,26 +386,27 @@ with tab2:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.subheader("🧠 Insights")
+        with st.container(border=True):
+            st.subheader("🧠 Insights")
 
-        # Top contributing segment
-        top_seg = churn_contribution.sort_values(by="Contribution (%)", ascending=False).iloc[0]
-        st.write(f"• **{top_seg[segment_option]}** contributes the most to churn")
-        st.write(f"• Accounts for **{top_seg['Contribution (%)']:.2f}%** of total churn")
-
-        # Spread analysis
-        max_val = churn_contribution["Contribution (%)"].max()
-        min_val = churn_contribution["Contribution (%)"].min()
-        spread = max_val - min_val
-
-        if spread > 20:
-            st.warning("⚠️ Churn is heavily concentrated in specific segments")
-        else:
-            st.info("ℹ️ Churn is relatively distributed across segments")
-
-        # Strategic takeaway
-        st.write("• Focus retention efforts on top contributing segment")
-        st.write("• Segment size + churn rate both influence contribution")
+            # Top contributing segment
+            top_seg = churn_contribution.sort_values(by="Contribution (%)", ascending=False).iloc[0]
+            st.write(f"• **{top_seg[segment_option]}** contributes the most to churn")
+            st.write(f"• Accounts for **{top_seg['Contribution (%)']:.2f}%** of total churn")
+    
+            # Spread analysis
+            max_val = churn_contribution["Contribution (%)"].max()
+            min_val = churn_contribution["Contribution (%)"].min()
+            spread = max_val - min_val
+    
+            if spread > 20:
+                st.warning("⚠️ Churn is heavily concentrated in specific segments")
+            else:
+                st.info("ℹ️ Churn is relatively distributed across segments")
+    
+            # Strategic takeaway
+            st.write("• Focus retention efforts on top contributing segment")
+            st.write("• Segment size + churn rate both influence contribution")
 
     st.caption("Shows the percentage contribution of each segment to total churn. "
                "Highlights which groups drive the largest share of customer exits.")
@@ -494,21 +495,22 @@ with tab4:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.subheader("🧠 Insights")
-        sorted_df = gender_churn.sort_values(by="Exited", ascending=False)
-        top = sorted_df.iloc[0]
-        low = sorted_df.iloc[-1]
-        diff = top["Exited"] - low["Exited"]
-        st.write(f"• Higher churn in **{top['Gender']}** (**{top['Exited']:.2f}%**)")
-        st.write(f"• Lower churn in **{low['Gender']}** (**{low['Exited']:.2f}%**)")
-        st.write(f"• Gap: **{diff:.2f}%**")
-
-        if diff > 5:
-            st.warning("⚠️ Noticeable gender-based churn difference")
-        else:
-            st.info("ℹ️ Minimal variation across genders")
-
-        st.write("• Consider gender-specific engagement strategies")
+        with st.container(border=True):
+            st.subheader("🧠 Insights")
+            sorted_df = gender_churn.sort_values(by="Exited", ascending=False)
+            top = sorted_df.iloc[0]
+            low = sorted_df.iloc[-1]
+            diff = top["Exited"] - low["Exited"]
+            st.write(f"• Higher churn in **{top['Gender']}** (**{top['Exited']:.2f}%**)")
+            st.write(f"• Lower churn in **{low['Gender']}** (**{low['Exited']:.2f}%**)")
+            st.write(f"• Gap: **{diff:.2f}%**")
+    
+            if diff > 5:
+                st.warning("⚠️ Noticeable gender-based churn difference")
+            else:
+                st.info("ℹ️ Minimal variation across genders")
+    
+            st.write("• Consider gender-specific engagement strategies")
 
     st.markdown('---')
 
@@ -566,19 +568,20 @@ with tab5:
         fig.update_layout(showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
     with col2:
-        st.subheader("🧠 Insights")
+        with st.container(border=True):
+            st.subheader("🧠 Insights")
 
-        sorted_df = balance_churn.sort_values(by="Exited", ascending=False)
-        top = sorted_df.iloc[0]
-        low = sorted_df.iloc[-1]
-
-        st.write(f"• Highest churn in **{top['BalanceGroup']}** segment")
-        st.write(f"• Lowest churn in **{low['BalanceGroup']}** segment")
-        st.write("• Balance is a strong indicator of customer stability")
-        st.write("• High-balance customers show higher churn risk,"
-                 " indicating potential financial or service dissatisfaction")
-        st.write("• Churn risk is highest among high-balance customers with low income, "
-                 "indicating that financial stress—not just wealth—drives customer exit.")
+            sorted_df = balance_churn.sort_values(by="Exited", ascending=False)
+            top = sorted_df.iloc[0]
+            low = sorted_df.iloc[-1]
+    
+            st.write(f"• Highest churn in **{top['BalanceGroup']}** segment")
+            st.write(f"• Lowest churn in **{low['BalanceGroup']}** segment")
+            st.write("• Balance is a strong indicator of customer stability")
+            st.write("• High-balance customers show higher churn risk,"
+                     " indicating potential financial or service dissatisfaction")
+            st.write("• Churn risk is highest among high-balance customers with low income, "
+                     "indicating that financial stress—not just wealth—drives customer exit.")
 
     st.markdown('---')
 
