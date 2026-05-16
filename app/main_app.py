@@ -242,20 +242,51 @@ with tab2:
 
     col1, col2 = st.columns([2, 1])
     with col1:
-        fig = px.bar(
-            churn_segment,
-            x=segment_option,
-            y="Exited",
-            color=segment_option,
-            color_discrete_map=current_color_map,
-            text_auto=".2f",
-            title=f"Churn Rate by {display_map[segment_option]} (%)"
+    fig = px.bar(
+        churn_segment,
+        x=segment_option,
+        y="Exited",
+        color=segment_option,
+        color_discrete_map=current_color_map,
+        text_auto=".2f",
+        title=f"Churn Rate by {display_map[segment_option]}",
+        labels={
+            segment_option: display_map[segment_option],
+            "Exited": "Churn Rate (%)"
+        }
+    )
+
+    fig.update_layout(
+        paper_bgcolor="#0F172A",
+        plot_bgcolor="#0F172A",
+        font_color="#F8FAFC",
+        showlegend=False,
+        title={
+            "x": 0.02,
+            "xanchor": "left"
+        },
+
+        # Axis titles
+        xaxis_title=display_map[segment_option],
+        yaxis_title="Churn Rate (%)",
+
+        # Cleaner grid
+        yaxis=dict(
+            showgrid=True,
+            gridcolor="#334155"
+        ),
+
+        xaxis=dict(
+            showgrid=False
         )
-        fig.update_layout(paper_bgcolor="#0F172A",
-                          plot_bgcolor="#0F172A",
-                          font_color="#F8FAFC")
-        fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+    )
+
+    # Better text formatting
+    fig.update_traces(
+        textposition="outside"
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 
     with col2:
         st.subheader("🧠 Insights")
