@@ -100,33 +100,39 @@ zero_balance_pct = (df["Balance"] == 0).mean() * 100
 
 # --- KPI Card Function ---
 def kpi_card(title, value):
-    st.markdown(f"""
-    <div style="
+
+    card_html = f"""
+    <div style='
         background-color:#111827;
         padding:20px;
         border-radius:16px;
         border:1px solid #334155;
         text-align:center;
         box-shadow:0 4px 12px rgba(0,0,0,0.25);
-    ">
-    
-        <div style="
+    '>
+
+        <p style='
             font-size:15px;
             color:#CBD5E1;
-            margin-bottom:8px;
-        ">
+            margin-bottom:10px;
+            font-weight:500;
+        '>
             {title}
-        </div>
+        </p>
 
-        <div style="
-            font-size:32px;
+        <h1 style='
+            font-size:34px;
             font-weight:700;
             color:#F8FAFC;
-        ">
+            margin:0;
+        '>
             {value}
-        </div>
+        </h1>
+
     </div>
-    """, unsafe_allow_html=True)
+    """
+
+    st.markdown(card_html, unsafe_allow_html=True)
 
 # --- First Row ---
 col1, col2, col3, col4 = st.columns(4)
