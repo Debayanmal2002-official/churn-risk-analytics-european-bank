@@ -71,7 +71,7 @@ Interactive Customer Churn Intelligence & Retention Analytics
 """, unsafe_allow_html=True)
 
 # --- Sidebar Filters ---
-st.sidebar.header("Filters")
+st.sidebar.markdown("## 🎛️ Dashboard Filters")
 
 all_geo = list(df["Geography"].unique())
 
