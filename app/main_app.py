@@ -133,13 +133,13 @@ col1, col2, col3 = st.columns(3)
 with col1:
     kpi_card(
         "Avg Balance (All Customers)",
-        f"{total_avg_balance:,.0f}"
+        f"€{total_avg_balance:,.0f}"
     )
 
 with col2:
     kpi_card(
         "Avg Balance (Active Customers)",
-        f"{non_zero_avg_balance:,.0f}"
+        f"€{non_zero_avg_balance:,.0f}"
     )
 
 with col3:
@@ -218,11 +218,11 @@ with tab1:
 
     st.markdown('---')
     st.subheader("🧾 Executive Summary")
-    st.write("1. Germany is the primary churn driver and should be prioritized for retention strategies ")
-    st.write("2. Mature customers (45–60) represent the highest-risk segment across all regions")
-    st.write("3. The combination of Germany + Mature customers forms the most critical churn hotspot")
-    st.write("4. Young customers show strong retention and require lower intervention focus")
-    st.write("5. Spain serves as a stable benchmark market for optimizing customer strategies")
+    st.write("• Germany is the primary churn driver and should be prioritized for retention strategies ")
+    st.write("• Mature customers (45–60) represent the highest-risk segment across all regions")
+    st.write("• The combination of Germany + Mature customers forms the most critical churn hotspot")
+    st.write("• Young customers show strong retention and require lower intervention focus")
+    st.write("• Spain serves as a stable benchmark market for optimizing customer strategies")
 
 
 with tab2:
@@ -461,7 +461,7 @@ with tab3:
             st.subheader("💸 Revenue Risk from Churn")
             churned_high_value = high_value_df[high_value_df["Exited"] == 1]
             revenue_risk = churned_high_value["Balance"].sum()
-            st.metric("Estimated Balance Lost", f"{revenue_risk:,.0f}")
+            st.metric("Estimated Balance Lost", f"€{revenue_risk:,.0f}")
             st.write("• Represents total balance held by churned high-value customers")
             st.write("• Indicates potential financial exposure due to churn")
 
