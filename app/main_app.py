@@ -14,7 +14,7 @@ st.markdown("""
 <style>
 
 .hero-section {background-image: linear-gradient( rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.88) ),
-    url("https://images.unsplash.com/photo-1554224155-6726b3ff858f");
+    url('https://images.unsplash.com/photo-1554224155-6726b3ff858f');
     background-size: cover;
     background-position: center;
     padding: 35px 40px;
@@ -32,11 +32,6 @@ st.markdown("""
 <style>
 .stApp {background-color: #0F172A; color: #F8FAFC;}
 section[data-testid="stSidebar"] { background-color: #1E293B;}
-div[data-testid="metric-container"] {
-    background-color: #111827;
-    border: 1px solid #334155;
-    padding: 15px;
-    border-radius: 12px;}
 
 h1, h2, h3, h4 {color: #F8FAFC;}
 
