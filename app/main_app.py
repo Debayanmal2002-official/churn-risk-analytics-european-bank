@@ -13,6 +13,40 @@ st.set_page_config(
 st.markdown("""
 <style>
 
+.hero-section {
+    background-image: linear-gradient(
+        rgba(15, 23, 42, 0.82),
+        rgba(15, 23, 42, 0.88)
+    ),
+    url("https://images.unsplash.com/photo-1520607162513-77705c0f0d4a");
+
+    background-size: cover;
+    background-position: center;
+
+    padding: 60px 40px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+
+    border: 1px solid #334155;
+}
+
+.hero-title {
+    color: #F8FAFC;
+    font-size: 60px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    color: #CBD5E1;
+    font-size: 20px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+st.markdown("""
+<style>
+
 .stApp {
     background-color: #0F172A;
     color: #F8FAFC;
@@ -49,7 +83,17 @@ df = load_data()
 df_og = df.copy()
 
 # --- Title ---
-st.title("🏦 Bank Customer Analytics Dashboard")
+st.markdown("""
+<div class="hero-section">
+    <div class="hero-title">
+        🏦 Bank Customer Analytics Dashboard
+    </div>
+
+    <div class="hero-subtitle">
+        Interactive Customer Churn Intelligence & Retention Analytics
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # --- Sidebar Filters ---
 st.sidebar.header("Filters")
