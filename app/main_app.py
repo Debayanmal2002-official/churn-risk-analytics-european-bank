@@ -91,8 +91,7 @@ df = df[df["Geography"].isin(geo_filter)]
 
 ## --- Main Body ---
 
-st.header("📊 Key Performance Indicators")
-col1, col2, col3, col4 = st.columns(4)
+st.markdown("## 📊 Key Performance Indicators")
 
 # --- KPI Calculations ---
 total_customers = len(df)
@@ -100,31 +99,83 @@ churn_rate = df["Exited"].mean() * 100
 avg_credit_score = df["CreditScore"].mean()
 inactive_churn = df[df["IsActiveMember"] == 0]["Exited"].mean() * 100
 
-# --- Display KPIs ---
-col1.metric("Total Customers", total_customers)
-col2.metric("Avg Credit Score", f"{avg_credit_score:.0f}")
-col3.metric("Churn Rate", f"{churn_rate:.2f}%")
-col4.metric("Inactive Customer Churn", f"{inactive_churn:.2f}%")
-
-st.markdown('---')
-
-col1, col2, col3 = st.columns(3)
-
-# --- KPI Calculations ---
 total_avg_balance = df["Balance"].mean()
 non_zero_avg_balance = df[df["Balance"] > 0]["Balance"].mean()
 zero_balance_pct = (df["Balance"] == 0).mean() * 100
 
-# --- Display KPIs ---
+# --- KPI Card Function ---
+def kpi_card(title, value):
+    st.markdown(f"""
+    <div style="
+        background-color:#111827;
+        padding:20px;
+        border-radius:16px;
+        border:1px solid #334155;
+        text-align:center;
+        box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    ">
+        <div style="
+            font-size:15px;
+            color:#CBD5E1;
+            margin-bottom:8px;
+        ">
+            {title}
+        </div>
 
-col1.metric("Avg Balance (All Customers)", f"{total_avg_balance:,.0f}")
-col2.metric("Avg Balance (Active Customers)", f"{non_zero_avg_balance:,.0f}")
-col3.metric("Zero Balance (%)", f"{zero_balance_pct:.2f}%")
+        <div style="
+            font-size:32px;
+            font-weight:700;
+            color:#F8FAFC;
+        ">
+            {value}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-st.markdown(' ')
-st.caption("Churn = % of customers who exited")
-st.caption("Zero Balance= % of customers who have 0 or unknown balance")
-st.markdown('---')
+# --- First Row ---
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    kpi_card("Total Customers", f"{total_customers:,}")
+
+with col2:
+    kpi_card("Avg Credit Score", f"{avg_credit_score:.0f}")
+
+with col3:
+    kpi_card("Churn Rate", f"{churn_rate:.2f}%")
+
+with col4:
+    kpi_card("Inactive Customer Churn", f"{inactive_churn:.2f}%")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# --- Second Row ---
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    kpi_card(
+        "Avg Balance (All Customers)",
+        f"{total_avg_balance:,.0f}"
+    )
+
+with col2:
+    kpi_card(
+        "Avg Balance (Active Customers)",
+        f"{non_zero_avg_balance:,.0f}"
+    )
+
+with col3:
+    kpi_card(
+        "Zero Balance (%)",
+        f"{zero_balance_pct:.2f}%"
+    )
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.caption("Churn = Percentage of customers who exited the bank")
+st.caption("Zero Balance = Customers with zero or undisclosed account balance")
+
+st.markdown("---")
 
 ## ------ Details -------##
 st.header("📉Detail Churn Analysis")
