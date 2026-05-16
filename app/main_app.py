@@ -421,10 +421,14 @@ with tab3:
     high_value_ratio = (df[df["BalanceGroup"] == "High (100K+)"]["Exited"].mean() * 100)
 
     col1, col2, col3, col4 = st.columns(4)
-    col1.metric("High-Balance Customers", hv_total)
-    col2.metric("Churned (High Balance)", int(hv_churned))
-    col3.metric("Churn Rate (High Balance)", f"{hv_churn_rate:.2f}%")
-    col4.metric("High-Value Churn Ratio", f"{high_value_ratio:.2f}%")
+    with col1:
+        kpi_card("High-Balance Customers", f"{hv_total:,}")  # Added comma formatting for thousands
+    with col2:
+        kpi_card("Churned (High Balance)", int(hv_churned))
+    with col3:
+        kpi_card("Churn Rate (High Balance)", f"{hv_churn_rate:.2f}%")
+    with col4:
+        kpi_card("High-Value Churn Ratio", f"{high_value_ratio:.2f}%")
 
     churn_matrix = (
         df.groupby(["BalanceGroup", "SalaryGroup"])["Exited"]
@@ -453,12 +457,13 @@ with tab3:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.subheader("💸 Revenue Risk from Churn")
-        churned_high_value = high_value_df[high_value_df["Exited"] == 1]
-        revenue_risk = churned_high_value["Balance"].sum()
-        st.metric("Estimated Balance Lost", f"{revenue_risk:,.0f}")
-        st.write("• Represents total balance held by churned high-value customers")
-        st.write("• Indicates potential financial exposure due to churn")
+        with st.container(border=True):
+            st.subheader("💸 Revenue Risk from Churn")
+            churned_high_value = high_value_df[high_value_df["Exited"] == 1]
+            revenue_risk = churned_high_value["Balance"].sum()
+            st.metric("Estimated Balance Lost", f"{revenue_risk:,.0f}")
+            st.write("• Represents total balance held by churned high-value customers")
+            st.write("• Indicates potential financial exposure due to churn")
 
     st.markdown('---')
 
