@@ -7,7 +7,7 @@ The solution is built as an interactive Streamlit dashboard with dynamic filteri
 
 
 ---
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://churn-risk-analytics-european-bank-6vsgffjxfpaqljqus9b2wf.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg?v=1)](https://churn-risk-analytics-european-bank-6vsgffjxfpaqljqus9b2wf.streamlit.app/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20461917.svg)](https://doi.org/10.5281/zenodo.20461917)
 ---
 
