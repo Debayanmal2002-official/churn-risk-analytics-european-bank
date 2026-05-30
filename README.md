@@ -3,8 +3,9 @@
 ## 📌 Project Overview
 This project analyzes customer churn behavior for a European bank using a structured data analytics approach.  
 The goal is to identify high-risk customer segments, understand churn drivers, and provide actionable business insights.
-
 The solution is built as an interactive Streamlit dashboard with dynamic filtering and multi-dimensional analysis.
+
+
 ---
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://churn-risk-analytics-european-bank-6vsgffjxfpaqljqus9b2wf.streamlit.app/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20461917.svg)](https://doi.org/10.5281/zenodo.20461917)
